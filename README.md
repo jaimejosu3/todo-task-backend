@@ -79,6 +79,9 @@ docker run -p 3000:3000 -d todo-list-backend
 
 Una vez ejecutados los comandos se puede realizar pruebas con postman a la ruta <a href="localhost:3000">http://localhost:3000</a>, de igual forma se puede ver la documentacion de swagger que se muestra en el siguiente punto.
 
+## Github Actions
+Se agrego un apartado para ejecutar las pruebas cada vez que se haga un pull request o un push a la rama principal.
+
 ## Documentacion 
 Para ver la documentación en desarrollo se accede a <a href="localhost:3000/docs">http://localhost:3000/docs</a>
 
