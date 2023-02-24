@@ -1,0 +1,276 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Meta": {
+				"properties": {
+					"code": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"code",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GeneralResponse": {
+				"properties": {
+					"meta": {
+						"$ref": "#/components/schemas/Meta"
+					},
+					"data": {}
+				},
+				"required": [
+					"meta"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TasksAdd": {
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"title",
+					"description",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TasksUpdate": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "todo-task-backend",
+		"version": "1.0.0",
+		"description": "Proyecto backend para administración de lista de tareas por parte de usuarios finales",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "jaimejosu3"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/tasks": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GeneralResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"tasks"
+				],
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "Add",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GeneralResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"tasks"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TasksAdd"
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GeneralResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"tasks"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TasksUpdate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/tasks/query": {
+			"get": {
+				"operationId": "GetByStatus",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GeneralResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"tasks"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "status",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/tasks/{id}": {
+			"get": {
+				"operationId": "GetById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GeneralResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"tasks"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeleteById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GeneralResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"tasks"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
