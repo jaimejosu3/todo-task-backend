@@ -1,8 +1,6 @@
 import express, { Application, Request, Response } from 'express';
-import morgan from "morgan";
 import dotenv from 'dotenv';
 import swaggerUi from "swagger-ui-express";
-import TasksRoute from './routes/tasks/tasks.route';
 import AllRoutes from './routes/index.router';
 dotenv.config();
 

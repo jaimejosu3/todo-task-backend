@@ -109,6 +109,7 @@
 						}
 					}
 				},
+				"description": "Retrieves all task existing",
 				"tags": [
 					"tasks"
 				],
@@ -129,6 +130,7 @@
 						}
 					}
 				},
+				"description": "Add a task",
 				"tags": [
 					"tasks"
 				],
@@ -159,6 +161,7 @@
 						}
 					}
 				},
+				"description": "Update a task",
 				"tags": [
 					"tasks"
 				],
@@ -191,6 +194,7 @@
 						}
 					}
 				},
+				"description": "Retrieves all pending task existing",
 				"tags": [
 					"tasks"
 				],
@@ -222,6 +226,7 @@
 						}
 					}
 				},
+				"description": "Retrieves an task with id",
 				"tags": [
 					"tasks"
 				],
@@ -251,6 +256,7 @@
 						}
 					}
 				},
+				"description": "Delete a task by id",
 				"tags": [
 					"tasks"
 				],

@@ -8,12 +8,19 @@ import { performBadRequestResponse, performNotFoundResponse, performSuccessRespo
 @Tags("tasks")
 @Route("tasks")
 export default class TasksController { 
+
+    /**
+     * Retrieves all task existing
+     */
     @Get()
     public async getAll(): Promise<GeneralResponse> { 
         let tasks = await Tasks.findAll();
         return performSuccessResponse(tasks, "Tasks obtained successfully.")
     }
 
+    /**
+     * Retrieves all pending task existing
+     */
     @Get("/query")
     public async getByStatus(@Query() status: any): Promise<GeneralResponse> { 
         let tasks = await Tasks.findAll({
@@ -24,6 +31,9 @@ export default class TasksController {
         return performSuccessResponse(tasks, "Tasks obtained successfully.")
     }
 
+    /**
+     * Retrieves an task with id
+     */
     @Get("{id}")
     public async getById(id: string): Promise<GeneralResponse> {
         if(!isInt(id)) return performBadRequestResponse("id is invalid format (requires number)")
@@ -32,6 +42,9 @@ export default class TasksController {
         return performSuccessResponse(task, "Task obtained successfully")            
     }
 
+    /**
+     * Add a task
+     */
     @Post()
     public async add(@Body() task: TasksAdd): Promise<GeneralResponse> {
         let validationResult = Validate(TasksAdd,task).error
@@ -41,6 +54,9 @@ export default class TasksController {
         return performSuccessResponse(newTask,"Task created successfully");
     }
 
+    /**
+     * Update a task
+     */
     @Put()
     public async update(@Body() task: TasksUpdate): Promise<GeneralResponse> {
         let validationResult = Validate(TasksUpdate,task).error
@@ -56,6 +72,9 @@ export default class TasksController {
         return performSuccessResponse(updatedTask,"Task updated successfully");        
     }
 
+    /**
+     * Delete a task by id
+     */
     @Delete("{id}")
     public async deleteById(id: string): Promise<GeneralResponse> {
         if(!isInt(id)) return performBadRequestResponse("id is invalid format (requires number)")
