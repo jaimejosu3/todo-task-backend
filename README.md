@@ -1,8 +1,8 @@
 ![nodejs-image]
 ![npm-image]
 
-# Proyecto de backend para prueba tecnica
-Este proyecto es creado con el objetivo de demostrar el uso y conocimiento de las tecnologias al momento de desarrollar un backend.
+# Proyecto de backend
+Base de proyecto backend utilizando typescript
 
 ## Librerias utilizadas en el proyecto
 | Libreria  | Uso en el proyecto |
